@@ -1,13 +1,12 @@
 # -*- encoding: utf-8 -*-
 $:.push File.expand_path("../lib", __FILE__)
-require "ActiveMerchant-FatZebra/version"
 
 Gem::Specification.new do |s|
   s.name        = "ActiveMerchant-FatZebra"
-  s.version     = ActiveMerchant::FatZebra::VERSION
+  s.version     = "1.0.0"
   s.authors     = ["Matthew Savage"]
-  s.email       = ["matt@amasses.net"]
-  s.homepage    = ""
+  s.email       = ["matthew.savage@fatzebra.com.au"]
+  s.homepage    = "https://www.fatzebra.com.au"
   s.summary     = %q{TODO: Write a gem summary}
   s.description = %q{TODO: Write a gem description}
 
@@ -18,7 +17,8 @@ Gem::Specification.new do |s|
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]
 
-  # specify any dependencies here; for example:
-  # s.add_development_dependency "rspec"
-  # s.add_runtime_dependency "rest-client"
+  s.add_runtime_dependency "activemerchant"
+  s.add_development_dependency "rake"
+  s.add_development_dependency('mocha', '~> 0.11.3')
+  s.add_development_dependency('rails', '>= 2.3.11')
 end
