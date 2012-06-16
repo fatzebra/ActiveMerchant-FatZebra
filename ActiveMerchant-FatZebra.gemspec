@@ -7,8 +7,8 @@ Gem::Specification.new do |s|
   s.authors     = ["Matthew Savage"]
   s.email       = ["matthew.savage@fatzebra.com.au"]
   s.homepage    = "https://www.fatzebra.com.au"
-  s.summary     = %q{TODO: Write a gem summary}
-  s.description = %q{TODO: Write a gem description}
+  s.summary     = %q{Fat Zebra support for Active Merchant, as a gem}
+  s.description = %q{Fat Zebra support for Active Merchant - temporary gem until support is combined into active_merchant core.}
 
   s.rubyforge_project = "ActiveMerchant-FatZebra"
 

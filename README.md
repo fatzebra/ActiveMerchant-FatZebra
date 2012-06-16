@@ -27,7 +27,7 @@ gateway = ActiveMerchant::Billing::FatZebraGateway.new(options)
 3. Setup the transaction data and then... transact!
 
 ```ruby
-cc = CreditCard.new(:first_name => "Joe", 
+cc = ActiveMerchant::Billing::CreditCard.new(:first_name => "Joe", 
 										:last_name => "Smith",
 										:number => "4444333322221111",
 										:month => 12,
@@ -36,7 +36,7 @@ cc = CreditCard.new(:first_name => "Joe",
 
 amount = 10000 # 100.00 in cents
 
-result = gateway.purchase(amount, cc, { :reference => "ORD18239", :ip => "1.2.3.4" }) # If you are using rails you would use request.remote_ip
+result = gateway.purchase(amount, cc, { :order_id => "ORD18239", :ip => request.ip }) # If you are using rails you would use request.remote_ip
 ```
 
 4. Handle the response - the data you get back is:
@@ -56,7 +56,7 @@ Refunds
 -------
 ```ruby
 # Refunding the amount of $100.00, for the original transaction ID of "AB12887Z"
-response = gateway.refund(10000, "AB12887Z", { :reference => "REFUND1", :ip => "1.2.3.4" })
+response = gateway.refund(10000, "AB12887Z", "REFUND1")
 
 response.success? # true or false
 ```
