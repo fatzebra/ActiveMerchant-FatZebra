@@ -1,5 +1,0 @@
-module ActiveMerchant
-  module FatZebra
-    VERSION = "0.0.1"
-  end
-end
