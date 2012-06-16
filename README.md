@@ -43,13 +43,12 @@ result = gateway.purchase(amount, cc, { :reference => "ORD18239", :ip => "1.2.3.
 
 ```ruby
 result.success? # True or False depending on if the txn was successful
-result.message # e.g. "Approved" or "Declined, Check with Issuer"
+result.message # e.g. "Approved" or "Declined"
 result.id # The transaction ID
 result.test? # Indicates if this was a test transaction
-result.avs_result # The AVS Result object, if provided (see https://github.com/Shopify/active_merchant/blob/master/lib/active_merchant/billing/avs_result.rb)
-result.cvv_result # The CVV (card verification value) Result object, if provided (see https://github.com/Shopify/active_merchant/blob/master/lib/active_merchant/billing/cvv_result.rb)
-result.fraud_review? # indicates if a fraud review is required
 result.params # Parameters passed by the gateway (e.g. may be additional info like fraud review score.)
+result.params["result"]["id"] # The transaction ID
+result.params["result"]["token"] # The card token (when storing a card)
 ```
 
 
