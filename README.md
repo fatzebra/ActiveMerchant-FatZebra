@@ -6,7 +6,7 @@ The quick 30-second rundown
 
 1. Install the gem in your Gemfile
 
-    gem "active_merchant_fat_zebra"
+    gem "activemerchant-fatzebra"
 
 Then `bundle install`
 
@@ -15,8 +15,8 @@ Then `bundle install`
 ```ruby
 
 options = {
-  :login => "test",
-  :token => "test_token"
+  :username => "TEST",
+  :token    => "TEST"
 }
 gateway = ActiveMerchant::Billing::FatZebraGateway.new(options)
 
@@ -28,15 +28,15 @@ gateway = ActiveMerchant::Billing::FatZebraGateway.new(options)
 
 ```ruby
 cc = ActiveMerchant::Billing::CreditCard.new(:first_name => "Joe", 
-										:last_name => "Smith",
-										:number => "4444333322221111",
-										:month => 12,
-										:year => 2013,
-										:verification_value => 123)
+											 :last_name => "Smith",
+											 :number => "5123456789012346",
+											 :month => 12,
+											 :year => 2013,
+											 :verification_value => 123)
 
 amount = 10000 # 100.00 in cents
 
-result = gateway.purchase(amount, cc, { :order_id => "ORD18239", :ip => request.ip }) # If you are using rails you would use request.remote_ip
+result = gateway.purchase(amount, cc, { :order_id => "ORD18239", :ip => request.ip })
 ```
 
 4. Handle the response - the data you get back is:
@@ -44,10 +44,11 @@ result = gateway.purchase(amount, cc, { :order_id => "ORD18239", :ip => request.
 ```ruby
 result.success? # True or False depending on if the txn was successful
 result.message # e.g. "Approved" or "Declined"
-result.id # The transaction ID
+result.authorization # The transaction ID
 result.test? # Indicates if this was a test transaction
 result.params # Parameters passed by the gateway (e.g. may be additional info like fraud review score.)
 result.params["result"]["id"] # The transaction ID
+result.params["result"]["authorization"] # The acquirer authorization ID
 result.params["result"]["token"] # The card token (when storing a card)
 ```
 
