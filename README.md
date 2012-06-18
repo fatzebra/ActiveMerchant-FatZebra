@@ -6,7 +6,7 @@ The quick 30-second rundown
 
 1. Install the gem in your Gemfile
 
-    gem "activemerchant-fatzebra"
+    gem "ActiveMerchant-FatZebra"
 
 Then `bundle install`
 
