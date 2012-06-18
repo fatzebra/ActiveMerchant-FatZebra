@@ -39,6 +39,8 @@ amount = 10000 # 100.00 in cents
 result = gateway.purchase(amount, cc, { :order_id => "ORD18239", :ip => request.ip })
 ```
 
+A list of test credit card numbers can be found at [https://www.fatzebra.com.au/help/testing#card-numbers](https://www.fatzebra.com.au/help/testing#card-numbers).
+
 4. Handle the response - the data you get back is:
 
 ```ruby
